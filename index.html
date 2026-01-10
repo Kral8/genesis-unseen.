@@ -3,14 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Genesis Unseen | NFT #1</title>
+    <title>Genesis Unseen | Official Site</title>
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;900&family=Rajdhani:wght@300;600&display=swap" rel="stylesheet">
     <style>
         :root {
-            --glow-color: #00f2ff; /* Сияние голубой энергии */
+            --glow-color: #00f2ff;
             --bg-color: #050505;
         }
-
         body {
             background-color: var(--bg-color);
             color: #ffffff;
@@ -21,131 +20,54 @@
             align-items: center;
             min-height: 100vh;
             background-image: radial-gradient(circle at 50% 50%, #111 0%, #050505 100%);
-            overflow-x: hidden;
         }
-
-        /* КРУТАЯ ПАРИЩАЯ ШАПКА */
-        header {
-            padding: 60px 20px;
-            text-align: center;
-        }
-
+        header { padding: 40px; text-align: center; }
         .logo-text {
             font-family: 'Orbitron', sans-serif;
-            font-size: 3.5rem;
-            font-weight: 900;
-            text-transform: uppercase;
-            letter-spacing: 10px;
+            font-size: 3rem;
+            letter-spacing: 8px;
             color: #fff;
-            text-shadow: 
-                0 0 10px var(--glow-color),
-                0 0 20px var(--glow-color),
-                0 0 40px var(--glow-color);
-            animation: floatLogo 4s ease-in-out infinite, pulseGlow 2s ease-in-out infinite alternate;
-            user-select: none;
+            text-shadow: 0 0 15px var(--glow-color);
+            animation: float 4s ease-in-out infinite;
         }
-
-        @keyframes floatLogo {
-            0% { transform: translateY(0px); }
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
             50% { transform: translateY(-15px); }
-            100% { transform: translateY(0px); }
         }
-
-        @keyframes pulseGlow {
-            from { text-shadow: 0 0 10px var(--glow-color), 0 0 20px var(--glow-color); }
-            to { text-shadow: 0 0 20px var(--glow-color), 0 0 40px var(--glow-color), 0 0 60px #008cff; }
-        }
-
-        /* КАРТОЧКА NFT */
-        .container {
-            width: 100%;
-            max-width: 800px;
-            padding-bottom: 50px;
-        }
-
+        .container { width: 90%; max-width: 600px; padding: 20px; }
         .nft-card {
             background: rgba(255, 255, 255, 0.03);
             backdrop-filter: blur(10px);
             border: 1px solid rgba(0, 242, 255, 0.2);
-            border-radius: 30px;
-            padding: 40px;
+            border-radius: 20px;
+            padding: 30px;
             text-align: center;
-            box-shadow: 0 20px 50px rgba(0,0,0,0.5);
-            transition: 0.5s;
+            box-shadow: 0 0 30px rgba(0,0,0,0.5);
         }
-
-        .nft-card:hover {
-            border-color: var(--glow-color);
-            box-shadow: 0 0 30px rgba(0, 242, 255, 0.2);
-        }
-
         .nft-image {
             width: 100%;
-            max-width: 500px;
-            border-radius: 20px;
-            box-shadow: 0 0 25px rgba(0,0,0,0.8);
-            margin-bottom: 30px;
-            /* Не забудь переименовать файл картинки в genesis_1.png или поменяй имя ниже */
-            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 15px;
+            box-shadow: 0 0 20px var(--glow-color);
+            margin-bottom: 25px;
         }
-
-        h2 {
-            font-family: 'Orbitron', sans-serif;
-            font-size: 1.8rem;
-            margin-bottom: 20px;
-            color: #fff;
-        }
-
-        p {
-            color: #aaa;
-            line-height: 1.6;
-            font-size: 1.2rem;
-            max-width: 600px;
-            margin: 0 auto 30px;
-        }
-
-        /* КНОПКА OPENSEA */
         .btn {
             display: inline-block;
             background: linear-gradient(45deg, #00c6ff, #0072ff);
             color: white;
-            padding: 18px 50px;
+            padding: 15px 40px;
             border-radius: 50px;
             text-decoration: none;
-            font-weight: bold;
             font-family: 'Orbitron', sans-serif;
-            letter-spacing: 2px;
+            font-size: 0.9rem;
             transition: 0.3s;
-            box-shadow: 0 10px 20px rgba(0, 114, 255, 0.3);
         }
-
         .btn:hover {
             transform: scale(1.05);
-            box-shadow: 0 0 30px var(--glow-color);
-            filter: brightness(1.2);
-        }
-
-        /* Декор на фоне */
-        .scanline {
-            width: 100%;
-            height: 2px;
-            background: rgba(0, 242, 255, 0.1);
-            position: fixed;
-            top: 0;
-            z-index: 10;
-            pointer-events: none;
-            animation: scan 8s linear infinite;
-        }
-
-        @keyframes scan {
-            0% { top: -10%; }
-            100% { top: 110%; }
+            box-shadow: 0 0 25px var(--glow-color);
         }
     </style>
 </head>
 <body>
-
-<div class="scanline"></div>
 
 <header>
     <div class="logo-text">GENESIS UNSEEN</div>
@@ -156,7 +78,7 @@
         <img src="genesis1.png" alt="Genesis Unseen #1" class="nft-image">
         
         <h2>Genesis Unseen #1</h2>
-        <p>Emerging from the digital void, the Genesis Unseen #1 represents the ultimate fusion of ancient celestial power and futuristic cyber-tech. Cloaked in obsidian armor and radiating a pulsating cerulean energy.</p>
+        <p>Emerging from the digital void, the Genesis Unseen #1 represents the ultimate fusion of ancient celestial power and futuristic cyber-tech.</p>
         
         <a href="https://opensea.io/item/polygon/0x1d0c9d414f122cc4608415df5d2320c9b23a89bb/1" target="_blank" class="btn">VIEW ON OPENSEA</a>
     </div>
