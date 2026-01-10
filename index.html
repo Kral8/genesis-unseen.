@@ -3,56 +3,172 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Genesis Unseen | Official Site</title>
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;900&display=swap" rel="stylesheet">
+    <title>Genesis Unseen #1 | Ancient Cyber Tech</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;900&family=Rajdhani:wght@300;700&display=swap" rel="stylesheet">
     <style>
+        :root {
+            --cyan: #00f2ff;
+            --deep-blue: #0041ff;
+            --gold: #d4af37;
+        }
+
         body {
-            background-color: #050505;
-            color: white;
-            font-family: 'Segoe UI', sans-serif;
             margin: 0;
+            padding: 0;
+            background: #000;
+            color: #fff;
+            font-family: 'Rajdhani', sans-serif;
+            overflow: hidden; /* Чтобы не было полос прокрутки */
             display: flex;
-            flex-direction: column;
-            align-items: center;
             justify-content: center;
-            min-height: 100vh;
+            align-items: center;
+            height: 100vh;
         }
-        .nft-card {
-            background: rgba(255, 255, 255, 0.05);
-            padding: 30px;
-            border-radius: 20px;
-            border: 1px solid #00f2ff;
-            text-align: center;
-            box-shadow: 0 0 30px rgba(0, 242, 255, 0.2);
-            max-width: 400px;
-        }
-        .nft-image {
+
+        /* Анимированный фон со звездами */
+        .stars-container {
+            position: absolute;
             width: 100%;
-            height: auto;
-            border-radius: 10px;
-            /* Если картинка не загрузится, будет видна эта рамка */
-            border: 2px dashed #333; 
+            height: 100%;
+            background: radial-gradient(circle at center, #0a0a2a 0%, #000 100%);
+            z-index: -1;
         }
-        h1 { font-family: 'Orbitron', sans-serif; font-size: 1.5rem; margin: 20px 0; }
-        .btn {
-            display: inline-block;
-            background: #00f2ff;
-            color: black;
-            padding: 12px 30px;
+
+        /* Энергетическая сфера вместо картинки */
+        .energy-orb {
+            width: 250px;
+            height: 250px;
+            background: radial-gradient(circle, var(--cyan) 0%, transparent 70%);
+            border-radius: 50%;
+            position: relative;
+            margin: 0 auto 40px;
+            box-shadow: 0 0 100px var(--cyan), inset 0 0 50px white;
+            animation: pulseOrb 3s ease-in-out infinite alternate;
+        }
+
+        .energy-orb::after {
+            content: '';
+            position: absolute;
+            top: -10px; left: -10px; right: -10px; bottom: -10px;
+            border: 2px solid var(--cyan);
+            border-radius: 50%;
+            animation: rotateRing 10s linear infinite;
+            opacity: 0.5;
+        }
+
+        @keyframes pulseOrb {
+            from { transform: scale(1); filter: brightness(1); }
+            to { transform: scale(1.1); filter: brightness(1.5); }
+        }
+
+        @keyframes rotateRing {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        /* Контент */
+        .content {
+            text-align: center;
+            z-index: 10;
+            max-width: 700px;
+            padding: 20px;
+        }
+
+        h1 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 4rem;
+            letter-spacing: 15px;
+            margin: 0;
+            background: linear-gradient(to bottom, #fff 30%, var(--cyan));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 0 30px rgba(0, 242, 255, 0.5);
+            animation: textFloat 4s ease-in-out infinite;
+        }
+
+        .subtitle {
+            font-size: 1.2rem;
+            color: var(--cyan);
+            text-transform: uppercase;
+            letter-spacing: 5px;
+            margin-bottom: 30px;
+            opacity: 0.8;
+        }
+
+        p {
+            font-size: 1.4rem;
+            line-height: 1.6;
+            color: #ccc;
+            margin-bottom: 40px;
+            font-weight: 300;
+        }
+
+        /* Кнопка */
+        .btn-cyber {
+            position: relative;
+            padding: 20px 60px;
+            background: transparent;
+            color: var(--cyan);
             text-decoration: none;
+            font-family: 'Orbitron', sans-serif;
             font-weight: bold;
-            border-radius: 50px;
-            margin-top: 20px;
+            text-transform: uppercase;
+            border: 1px solid var(--cyan);
+            overflow: hidden;
+            transition: 0.4s;
+            letter-spacing: 3px;
         }
+
+        .btn-cyber:hover {
+            background: var(--cyan);
+            color: #000;
+            box-shadow: 0 0 50px var(--cyan);
+        }
+
+        .btn-cyber::before {
+            content: '';
+            position: absolute;
+            top: 0; left: -100%;
+            width: 100%; height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+            transition: 0.5s;
+        }
+
+        .btn-cyber:hover::before {
+            left: 100%;
+        }
+
+        @keyframes textFloat {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        /* Декоративные линии */
+        .line {
+            position: absolute;
+            background: var(--cyan);
+            opacity: 0.2;
+        }
+        .v-line { width: 1px; height: 100%; top: 0; }
+        .h-line { height: 1px; width: 100%; left: 0; }
     </style>
 </head>
 <body>
 
-    <div class="nft-card">
-        <img src="nft.png" alt="NFT Image" class="nft-image">
-        <h1>Genesis Unseen #1</h1>
-        <p>Ancient celestial power meets futuristic cyber-tech.</p>
-        <a href="https://opensea.io/item/polygon/0x1d0c9d414f122cc4608415df5d2320c9b23a89bb/1" target="_blank" class="btn">View on OpenSea</a>
+    <div class="stars-container"></div>
+    
+    <div class="line v-line" style="left: 20%;"></div>
+    <div class="line v-line" style="right: 20%;"></div>
+    <div class="line h-line" style="top: 30%;"></div>
+    <div class="line h-line" style="bottom: 30%;"></div>
+
+    <div class="content">
+        <div class="energy-orb"></div>
+        <div class="subtitle">Genesis Unseen #1</div>
+        <h1>GENESIS</h1>
+        <p>Emerging from the digital void, representing the ultimate fusion of ancient celestial power and futuristic cyber-tech. Cloaked in obsidian armor and radiating a pulsating cerulean energy.</p>
+        
+        <a href="https://opensea.io/item/polygon/0x1d0c9d414f122cc4608415df5d2320c9b23a89bb/1" target="_blank" class="btn-cyber">View on OpenSea</a>
     </div>
 
 </body>
