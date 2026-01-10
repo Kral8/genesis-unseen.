@@ -4,85 +4,56 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Genesis Unseen | Official Site</title>
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;900&family=Rajdhani:wght@300;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;900&display=swap" rel="stylesheet">
     <style>
-        :root {
-            --glow-color: #00f2ff;
-            --bg-color: #050505;
-        }
         body {
-            background-color: var(--bg-color);
-            color: #ffffff;
-            font-family: 'Rajdhani', sans-serif;
+            background-color: #050505;
+            color: white;
+            font-family: 'Segoe UI', sans-serif;
             margin: 0;
             display: flex;
             flex-direction: column;
             align-items: center;
+            justify-content: center;
             min-height: 100vh;
-            background-image: radial-gradient(circle at 50% 50%, #111 0%, #050505 100%);
         }
-        header { padding: 40px; text-align: center; }
-        .logo-text {
-            font-family: 'Orbitron', sans-serif;
-            font-size: 3rem;
-            letter-spacing: 8px;
-            color: #fff;
-            text-shadow: 0 0 15px var(--glow-color);
-            animation: float 4s ease-in-out infinite;
-        }
-        @keyframes float {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-15px); }
-        }
-        .container { width: 90%; max-width: 600px; padding: 20px; }
         .nft-card {
-            background: rgba(255, 255, 255, 0.03);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(0, 242, 255, 0.2);
-            border-radius: 20px;
+            background: rgba(255, 255, 255, 0.05);
             padding: 30px;
+            border-radius: 20px;
+            border: 1px solid #00f2ff;
             text-align: center;
-            box-shadow: 0 0 30px rgba(0,0,0,0.5);
+            box-shadow: 0 0 30px rgba(0, 242, 255, 0.2);
+            max-width: 400px;
         }
         .nft-image {
             width: 100%;
-            border-radius: 15px;
-            box-shadow: 0 0 20px var(--glow-color);
-            margin-bottom: 25px;
+            height: auto;
+            border-radius: 10px;
+            /* Если картинка не загрузится, будет видна эта рамка */
+            border: 2px dashed #333; 
         }
+        h1 { font-family: 'Orbitron', sans-serif; font-size: 1.5rem; margin: 20px 0; }
         .btn {
             display: inline-block;
-            background: linear-gradient(45deg, #00c6ff, #0072ff);
-            color: white;
-            padding: 15px 40px;
-            border-radius: 50px;
+            background: #00f2ff;
+            color: black;
+            padding: 12px 30px;
             text-decoration: none;
-            font-family: 'Orbitron', sans-serif;
-            font-size: 0.9rem;
-            transition: 0.3s;
-        }
-        .btn:hover {
-            transform: scale(1.05);
-            box-shadow: 0 0 25px var(--glow-color);
+            font-weight: bold;
+            border-radius: 50px;
+            margin-top: 20px;
         }
     </style>
 </head>
 <body>
 
-<header>
-    <div class="logo-text">GENESIS UNSEEN</div>
-</header>
-
-<div class="container">
     <div class="nft-card">
-        <img src="genesis1.png" alt="Genesis Unseen #1" class="nft-image">
-        
-        <h2>Genesis Unseen #1</h2>
-        <p>Emerging from the digital void, the Genesis Unseen #1 represents the ultimate fusion of ancient celestial power and futuristic cyber-tech.</p>
-        
-        <a href="https://opensea.io/item/polygon/0x1d0c9d414f122cc4608415df5d2320c9b23a89bb/1" target="_blank" class="btn">VIEW ON OPENSEA</a>
+        <img src="nft.png" alt="NFT Image" class="nft-image">
+        <h1>Genesis Unseen #1</h1>
+        <p>Ancient celestial power meets futuristic cyber-tech.</p>
+        <a href="https://opensea.io/item/polygon/0x1d0c9d414f122cc4608415df5d2320c9b23a89bb/1" target="_blank" class="btn">View on OpenSea</a>
     </div>
-</div>
 
 </body>
 </html>
