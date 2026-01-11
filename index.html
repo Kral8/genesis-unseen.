@@ -3,13 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Genesis Unseen #1 | Ancient Cyber Tech</title>
+    <title>Genesis Unseen | NFT Collection</title>
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;900&family=Rajdhani:wght@300;700&display=swap" rel="stylesheet">
     <style>
         :root {
             --cyan: #00f2ff;
+            --purple: #bc13fe;
             --deep-blue: #0041ff;
-            --gold: #d4af37;
         }
 
         body {
@@ -18,157 +18,153 @@
             background: #000;
             color: #fff;
             font-family: 'Rajdhani', sans-serif;
-            overflow: hidden; /* Чтобы не было полос прокрутки */
+            min-height: 100vh;
             display: flex;
-            justify-content: center;
+            flex-direction: column;
             align-items: center;
-            height: 100vh;
+            overflow-x: hidden;
         }
 
-        /* Анимированный фон со звездами */
+        /* Анимированный фон */
         .stars-container {
-            position: absolute;
+            position: fixed;
             width: 100%;
             height: 100%;
             background: radial-gradient(circle at center, #0a0a2a 0%, #000 100%);
             z-index: -1;
         }
 
-        /* Энергетическая сфера вместо картинки */
-        .energy-orb {
-            width: 250px;
-            height: 250px;
-            background: radial-gradient(circle, var(--cyan) 0%, transparent 70%);
-            border-radius: 50%;
-            position: relative;
-            margin: 0 auto 40px;
-            box-shadow: 0 0 100px var(--cyan), inset 0 0 50px white;
-            animation: pulseOrb 3s ease-in-out infinite alternate;
-        }
-
-        .energy-orb::after {
-            content: '';
-            position: absolute;
-            top: -10px; left: -10px; right: -10px; bottom: -10px;
-            border: 2px solid var(--cyan);
-            border-radius: 50%;
-            animation: rotateRing 10s linear infinite;
-            opacity: 0.5;
-        }
-
-        @keyframes pulseOrb {
-            from { transform: scale(1); filter: brightness(1); }
-            to { transform: scale(1.1); filter: brightness(1.5); }
-        }
-
-        @keyframes rotateRing {
-            from { transform: rotate(0deg); }
-            to { transform: rotate(360deg); }
-        }
-
-        /* Контент */
-        .content {
+        .header {
             text-align: center;
+            padding: 50px 20px;
             z-index: 10;
-            max-width: 700px;
-            padding: 20px;
         }
 
         h1 {
             font-family: 'Orbitron', sans-serif;
-            font-size: 4rem;
+            font-size: clamp(2rem, 8vw, 4rem);
             letter-spacing: 15px;
             margin: 0;
             background: linear-gradient(to bottom, #fff 30%, var(--cyan));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             text-shadow: 0 0 30px rgba(0, 242, 255, 0.5);
-            animation: textFloat 4s ease-in-out infinite;
         }
 
-        .subtitle {
-            font-size: 1.2rem;
-            color: var(--cyan);
-            text-transform: uppercase;
-            letter-spacing: 5px;
-            margin-bottom: 30px;
-            opacity: 0.8;
+        /* Сетка для NFT */
+        .nft-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 40px;
+            width: 90%;
+            max-width: 1200px;
+            padding-bottom: 50px;
+            z-index: 10;
         }
 
-        p {
-            font-size: 1.4rem;
-            line-height: 1.6;
-            color: #ccc;
-            margin-bottom: 40px;
-            font-weight: 300;
-        }
-
-        /* Кнопка */
-        .btn-cyber {
+        /* Карточка NFT */
+        .nft-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(0, 242, 255, 0.2);
+            border-radius: 20px;
+            padding: 20px;
+            text-align: center;
+            transition: 0.4s ease;
             position: relative;
-            padding: 20px 60px;
-            background: transparent;
+            overflow: hidden;
+        }
+
+        .nft-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--cyan);
+            box-shadow: 0 0 30px rgba(0, 242, 255, 0.3);
+            background: rgba(255, 255, 255, 0.08);
+        }
+
+        .nft-image {
+            width: 100%;
+            height: 350px;
+            object-fit: cover;
+            border-radius: 15px;
+            margin-bottom: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .nft-title {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.5rem;
+            color: var(--cyan);
+            margin: 10px 0;
+            text-transform: uppercase;
+        }
+
+        .nft-desc {
+            font-size: 1rem;
+            color: #ccc;
+            line-height: 1.4;
+            margin-bottom: 25px;
+            height: 60px;
+        }
+
+        .btn-buy {
+            display: inline-block;
+            padding: 12px 30px;
+            border: 1px solid var(--cyan);
             color: var(--cyan);
             text-decoration: none;
             font-family: 'Orbitron', sans-serif;
-            font-weight: bold;
+            font-size: 0.9rem;
+            transition: 0.3s;
             text-transform: uppercase;
-            border: 1px solid var(--cyan);
-            overflow: hidden;
-            transition: 0.4s;
-            letter-spacing: 3px;
         }
 
-        .btn-cyber:hover {
+        .btn-buy:hover {
             background: var(--cyan);
             color: #000;
-            box-shadow: 0 0 50px var(--cyan);
+            box-shadow: 0 0 20px var(--cyan);
         }
 
-        .btn-cyber::before {
-            content: '';
-            position: absolute;
-            top: 0; left: -100%;
-            width: 100%; height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
-            transition: 0.5s;
-        }
-
-        .btn-cyber:hover::before {
-            left: 100%;
-        }
-
-        @keyframes textFloat {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-10px); }
-        }
-
-        /* Декоративные линии */
+        /* Линии на фоне */
         .line {
-            position: absolute;
+            position: fixed;
             background: var(--cyan);
-            opacity: 0.2;
+            opacity: 0.1;
+            z-index: -1;
         }
         .v-line { width: 1px; height: 100%; top: 0; }
         .h-line { height: 1px; width: 100%; left: 0; }
+
     </style>
 </head>
 <body>
 
     <div class="stars-container"></div>
     
-    <div class="line v-line" style="left: 20%;"></div>
-    <div class="line v-line" style="right: 20%;"></div>
-    <div class="line h-line" style="top: 30%;"></div>
-    <div class="line h-line" style="bottom: 30%;"></div>
+    <div class="line v-line" style="left: 10%;"></div>
+    <div class="line v-line" style="right: 10%;"></div>
 
-    <div class="content">
-        <div class="energy-orb"></div>
-        <div class="subtitle">Genesis Unseen #1</div>
-        <h1>GENESIS</h1>
-        <p>Emerging from the digital void, representing the ultimate fusion of ancient celestial power and futuristic cyber-tech. Cloaked in obsidian armor and radiating a pulsating cerulean energy.</p>
+    <div class="header">
+        <h1>GENESIS UNSEEN</h1>
+        <p style="letter-spacing: 5px; color: var(--cyan);">COLLECTION 2026</p>
+    </div>
+
+    <div class="nft-grid">
         
-        <a href="https://opensea.io/item/polygon/0x1d0c9d414f122cc4608415df5d2320c9b23a89bb/1" target="_blank" class="btn-cyber">View on OpenSea</a>
+        <div class="nft-card">
+            <img src="genesis1.png" alt="Genesis #1" class="nft-image">
+            <div class="nft-title">Genesis #1</div>
+            <p class="nft-desc">Ancient cyber-tech fusion radiating with pure celestial energy. The first of the unseen.</p>
+            <a href="#" class="btn-buy">Collect Now</a>
+        </div>
+
+        <div class="nft-card">
+            <img src="Void Reaper.png" alt="Void Reaper #0" class="nft-image">
+            <div class="nft-title">Void Reaper #0</div>
+            <p class="nft-desc">The Silent Guardian of the deep cosmos. Woven from the fabric of the infinite void.</p>
+            <a href="#" class="btn-buy">Collect Now</a>
+        </div>
+
     </div>
 
 </body>
