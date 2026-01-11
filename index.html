@@ -3,169 +3,157 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Genesis Unseen | NFT Collection</title>
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;900&family=Rajdhani:wght@300;700&display=swap" rel="stylesheet">
+    <title>VOID Ecosystem | The Zenith Ascendant</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Inter:wght@300;600&display=swap" rel="stylesheet">
     <style>
         :root {
-            --cyan: #00f2ff;
-            --purple: #bc13fe;
-            --deep-blue: #0041ff;
+            --void-black: #050505;
+            --void-purple: #6035FF;
+            --void-blue: #2081E2;
+            --zenith-gold: #FFD700;
+            --text-gray: #b0b0b0;
         }
 
         body {
+            background-color: var(--void-black);
+            color: white;
+            font-family: 'Inter', sans-serif;
             margin: 0;
             padding: 0;
-            background: #000;
-            color: #fff;
-            font-family: 'Rajdhani', sans-serif;
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
             overflow-x: hidden;
         }
 
-        /* Анимированный фон */
-        .stars-container {
-            position: fixed;
-            width: 100%;
-            height: 100%;
-            background: radial-gradient(circle at center, #0a0a2a 0%, #000 100%);
-            z-index: -1;
-        }
+        h1, h2, h3 { font-family: 'Orbitron', sans-serif; text-transform: uppercase; letter-spacing: 2px; }
 
-        .header {
+        .container { max-width: 1200px; margin: 0 auto; padding: 20px; }
+
+        /* Header Area */
+        header {
             text-align: center;
-            padding: 50px 20px;
-            z-index: 10;
+            padding: 80px 20px;
+            background: radial-gradient(circle at center, #1a0b3d 0%, var(--void-black) 70%);
         }
 
-        h1 {
-            font-family: 'Orbitron', sans-serif;
-            font-size: clamp(2rem, 8vw, 4rem);
-            letter-spacing: 15px;
-            margin: 0;
-            background: linear-gradient(to bottom, #fff 30%, var(--cyan));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            text-shadow: 0 0 30px rgba(0, 242, 255, 0.5);
-        }
+        header h1 { font-size: 3.5rem; margin-bottom: 10px; background: linear-gradient(to right, #fff, #666); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        header p { color: var(--text-gray); font-size: 1.2rem; max-width: 700px; margin: 0 auto; }
 
-        /* Сетка для NFT */
+        /* NFT Grid */
         .nft-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 40px;
-            width: 90%;
-            max-width: 1200px;
-            padding-bottom: 50px;
-            z-index: 10;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
         }
 
-        /* Карточка NFT */
         .nft-card {
-            background: rgba(255, 255, 255, 0.05);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(0, 242, 255, 0.2);
+            background: #111;
+            border: 1px solid #222;
             border-radius: 20px;
             padding: 20px;
             text-align: center;
-            transition: 0.4s ease;
+            transition: 0.4s;
             position: relative;
-            overflow: hidden;
         }
 
-        .nft-card:hover {
-            transform: translateY(-10px);
-            border-color: var(--cyan);
-            box-shadow: 0 0 30px rgba(0, 242, 255, 0.3);
-            background: rgba(255, 255, 255, 0.08);
-        }
+        .nft-card:hover { transform: translateY(-10px); border-color: var(--void-purple); box-shadow: 0 10px 30px rgba(96, 53, 255, 0.2); }
 
-        .nft-image {
-            width: 100%;
-            height: 350px;
-            object-fit: cover;
-            border-radius: 15px;
-            margin-bottom: 20px;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-        }
+        .nft-card img { width: 100%; border-radius: 15px; margin-bottom: 20px; }
 
-        .nft-title {
-            font-family: 'Orbitron', sans-serif;
-            font-size: 1.5rem;
-            color: var(--cyan);
-            margin: 10px 0;
-            text-transform: uppercase;
+        /* Special Styling for Zenith */
+        .card-premium {
+            border: 2px solid var(--zenith-gold) !important;
+            background: linear-gradient(145deg, #111 0%, #1a1600 100%);
         }
+        .card-premium:hover { box-shadow: 0 10px 40px rgba(255, 215, 0, 0.25); }
+        .badge { background: var(--zenith-gold); color: black; padding: 5px 15px; border-radius: 20px; font-weight: bold; font-size: 0.8rem; position: absolute; top: 10px; right: 10px; }
 
-        .nft-desc {
-            font-size: 1rem;
-            color: #ccc;
-            line-height: 1.4;
-            margin-bottom: 25px;
-            height: 60px;
-        }
-
-        .btn-buy {
+        /* Buttons */
+        .btn {
             display: inline-block;
             padding: 12px 30px;
-            border: 1px solid var(--cyan);
-            color: var(--cyan);
+            border-radius: 10px;
             text-decoration: none;
-            font-family: 'Orbitron', sans-serif;
-            font-size: 0.9rem;
+            font-weight: bold;
+            margin-top: 20px;
             transition: 0.3s;
-            text-transform: uppercase;
         }
 
-        .btn-buy:hover {
-            background: var(--cyan);
-            color: #000;
-            box-shadow: 0 0 20px var(--cyan);
-        }
+        .btn-blue { background: var(--void-blue); color: white; }
+        .btn-gold { background: var(--zenith-gold); color: black; }
+        .btn:hover { opacity: 0.9; transform: scale(1.05); }
 
-        /* Линии на фоне */
-        .line {
-            position: fixed;
-            background: var(--cyan);
-            opacity: 0.1;
-            z-index: -1;
+        /* Tokenomics Section */
+        .tokenomics {
+            margin-top: 100px;
+            padding: 60px;
+            background: #0a0a0a;
+            border-radius: 30px;
+            border: 1px dashed #333;
+            text-align: center;
         }
-        .v-line { width: 1px; height: 100%; top: 0; }
-        .h-line { height: 1px; width: 100%; left: 0; }
-
+        .tokenomics h2 { color: var(--void-purple); margin-bottom: 40px; }
+        .stats { display: flex; justify-content: space-around; flex-wrap: wrap; gap: 20px; }
+        .stat-item h4 { color: var(--text-gray); margin-bottom: 5px; }
+        .stat-item p { font-size: 1.5rem; font-weight: bold; color: white; }
     </style>
 </head>
 <body>
 
-    <div class="stars-container"></div>
-    
-    <div class="line v-line" style="left: 10%;"></div>
-    <div class="line v-line" style="right: 10%;"></div>
+    <header>
+        <h1>ENTER THE $VOID</h1>
+        <p>Beyond ownership. Beyond rare. Secure the most powerful artifacts of the digital abyss on the Polygon Network.</p>
+    </header>
 
-    <div class="header">
-        <h1>GENESIS UNSEEN</h1>
-        <p style="letter-spacing: 5px; color: var(--cyan);">COLLECTION 2026</p>
-    </div>
-
-    <div class="nft-grid">
+    <div class="container">
         
-        <div class="nft-card">
-            <img src="genesis1.png" alt="Genesis #1" class="nft-image">
-            <div class="nft-title">Genesis #1</div>
-            <p class="nft-desc">Ancient cyber-tech fusion radiating with pure celestial energy. The first of the unseen.</p>
-            <a href="#" class="btn-buy">Collect Now</a>
+        <div class="nft-grid">
+            <div class="nft-card">
+                <img src="https://via.placeholder.com/400x400?text=GENESIS+1" alt="Genesis #1"> <h3>Genesis #1</h3>
+                <p>The origin of power. Pure, unique, and the first of its kind.</p>
+                <div style="color: var(--void-blue); font-weight: bold;">50 MATIC</div>
+                <a href="https://opensea.io/item/polygon/0x1d0c9d414f122cc4608415df5d2320c9b23a89bb/1" target="_blank" class="btn btn-blue">View on OpenSea</a>
+            </div>
+
+            <div class="nft-card card-premium">
+                <div class="badge">ULTRA RARE</div>
+                <img src="https://via.placeholder.com/400x400?text=ZENITH+ASCENDANT" alt="Zenith Ascendant"> <h3>Zenith Ascendant</h3>
+                <p>The Supreme Deity. Commander of light and void. The ultimate artifact.</p>
+                <div style="color: var(--zenith-gold); font-weight: bold;">1000 MATIC</div>
+                <a href="https://opensea.io/item/polygon/0xa88f89684ca4d078a7d21f0ebf295c2366c4fe27/1" target="_blank" class="btn btn-gold">Acquire the Legend</a>
+            </div>
+
+            <div class="nft-card">
+                <img src="https://via.placeholder.com/400x400?text=VOID+REAPER" alt="Void Reaper"> <h3>Void Reaper</h3>
+                <p>Embrace the darkness. A legendary harvester of digital souls.</p>
+                <div style="color: var(--void-blue); font-weight: bold;">150 MATIC</div>
+                <a href="https://opensea.io/item/polygon/0x1f5be95ac7e3e56de2ded91449fce9728b552d95/1" target="_blank" class="btn btn-blue">View on OpenSea</a>
+            </div>
         </div>
 
-        <div class="nft-card">
-            <img src="Void Reaper.png" alt="Void Reaper #0" class="nft-image">
-            <div class="nft-title">Void Reaper #0</div>
-            <p class="nft-desc">The Silent Guardian of the deep cosmos. Woven from the fabric of the infinite void.</p>
-            <a href="#" class="btn-buy">Collect Now</a>
+        <div class="tokenomics">
+            <h2>$VOID Tokenomics</h2>
+            <p style="margin-bottom: 40px; color: var(--text-gray);">The fuel of the abyss. Hyper-deflationary currency for the Polygon elite.</p>
+            <div class="stats">
+                <div class="stat-item">
+                    <h4>Total Supply</h4>
+                    <p>33,333,333 $VOID</p>
+                </div>
+                <div class="stat-item">
+                    <h4>Network</h4>
+                    <p>Polygon</p>
+                </div>
+                <div class="stat-item">
+                    <h4>Utility</h4>
+                    <p>NFT Access & Staking</p>
+                </div>
+            </div>
         </div>
 
     </div>
+
+    <footer style="text-align: center; padding: 50px; color: #444; font-size: 0.8rem;">
+        &copy; 2026 VOID PROJECT. STARE INTO THE ABYSS.
+    </footer>
 
 </body>
 </html>
